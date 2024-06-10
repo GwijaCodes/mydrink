@@ -6,8 +6,9 @@ import Card from './components/Card'
 
 export default function Home() {
   const [recipes, setRecipes] = useState([]);
-  const [search, setSearch] = useState([]);
+
   const [loading, setLoading] = useState(false);
+  const [term, setTerm] = useState('')
 
   useEffect(() => {
     setLoading(true)
@@ -34,10 +35,12 @@ export default function Home() {
   return (
     <>
     <Header/>
-    <Search/>
+    <Search setRecipes={setRecipes}/>
 
     <div className="flex items-center justify-center p-10">
-      <div className="flex flex-wrap flex-col lg:flex-row items-center gap-5">
+      {
+        loading? (<><h2 className="text-center 3-xl">Loading...</h2></>) : (<>
+        <div className="flex overflow-x-scroll pb-10 hide-scroll-bar gap-5">
         {
           recipes?.map((recipe) => (
             <Card 
@@ -46,6 +49,9 @@ export default function Home() {
           ))
         }
       </div>
+        </>)
+      }
+      
     </div>
 
     </>

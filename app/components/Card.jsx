@@ -5,9 +5,11 @@ import Image from 'next/image';
 function Card({ recipe }) {
     return (
         <Link href={`/recipes/${recipe?.idDrink}`}>
-            <div className='max-w-sm border-2 border-gray-300 cursor-pointer hover:border-black'>
-                <Image src={recipe?.strDrinkThumb} width={350} height={250} alt="drink image"></Image>
-                <h2 className='bg-white py-4 text-gray-500 font-semibold text-2xl text-center'>{recipe?.strDrink}</h2>
+            <div
+                style={{ '--image-url': `url(${recipe?.strDrinkThumb})` }}
+                className='relative w-64 h-64 max-w-xs overflow-hidden bg-[image:var(--image-url)] bg-cover flex items-end'>
+                <div className='w-64 h-64 absolute bg-gradient-to-t from-teal-600 to-transparent-500 to-40%'></div>
+                <h2 className='z-10 font-semibold text-white m-4'>{recipe?.strDrink}</h2>
             </div>
         </Link>
     )
