@@ -18,7 +18,7 @@ export default async function page({ params }) {
   const data = await getData(id)
   console.log(data?.drinks[0]?.strDrink)
   return (
-    <>
+    <div className='bg-[--pale]'>
       <Header />
       <div className='container mx-auto my-20'>
         <div className='flex border-2 border-gray-300 cursor-pointer p-4'>
@@ -52,13 +52,13 @@ export default async function page({ params }) {
           <div className='bg-white p-4 mb-4 border border-gray-300 rounded'>
             <h2 className='text-xl font-semibold mb-2'>Istruzioni:</h2>
             <ol className='list-decimal pl-4'>
-              {data?.drinks[0].strInstructionsIT.split(`\r\n`).map((step, index) => {
+              {data?.drinks[0].strInstructions.split(`\r\n`).map((step, index) => {
                 <li key={index}>{step}</li>
               })}
             </ol>
           </div>
         </div>
       </div>
-    </>
+   </div>
   )
 }
