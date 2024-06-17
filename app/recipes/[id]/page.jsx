@@ -19,7 +19,6 @@ export default async function page({ params }) {
   console.log(data?.drinks[0]?.strDrink)
   return (
     <div className='bg-[--pale]'>
-      <Header />
       <div className='container mx-auto my-20'>
         <div className='flex border-2 border-gray-300 cursor-pointer p-4'>
           <div className='relative w-[50%] h-[500px] mr-8'>
@@ -59,6 +58,6 @@ export default async function page({ params }) {
           </div>
         </div>
       </div>
-   </div>
+    </div>
   )
 }

@@ -10,6 +10,19 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [term, setTerm] = useState('')
 
+  const saved = [
+    {
+      key: 1,
+      recipe: 'Gin Fizz',
+      pic: ''
+    },
+    {
+      key: 2,
+      recipe: 'Gin Lemon',
+      pic: ''
+    },
+  ];
+
   useEffect(() => {
     setLoading(true)
     const fetchRecipes = async () => {
@@ -22,7 +35,7 @@ export default function Home() {
         const result = await res.json();
         setRecipes(result?.drinks)
 
-        console.log(recipes)
+        // console.log(recipes)
         
       } catch(err){
         console.log(err)
@@ -45,13 +58,28 @@ export default function Home() {
           recipes?.map((recipe) => (
             <Card 
             key={recipe?.idDrink} 
-            recipe={recipe}/>
+            recipe={recipe}
+            saved = {saved}/>
           ))
         }
       </div>
         </>)
       }
       
+    </div>
+
+    <div className="saved flex items-center justify-baseline p-10">
+      <div className="flex overflow-x-scroll pb-10 hide-scroll-bar gap-5">
+ {
+      // saved.map(() => (
+     
+       
+      // )
+
+      // )
+      }
+      </div>
+     
     </div>
     </div>
 
