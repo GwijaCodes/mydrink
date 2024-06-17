@@ -14,7 +14,7 @@ export default function Home() {
     setLoading(true)
     const fetchRecipes = async () => {
         try{
-        const res = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita`)
+        const res = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=gin`)
 
         if(!res.ok){
           throw new Error('Something went wrong')
@@ -33,11 +33,11 @@ export default function Home() {
     fetchRecipes()
   }, [])
   return (
-    <>
+    <div className="bg-[--pale]">
     <Header/>
     <Search setRecipes={setRecipes}/>
 
-    <div className="flex items-center justify-center p-10">
+    <div className="flex items-center justify-baseline p-10">
       {
         loading? (<><h2 className="text-center 3-xl">Loading...</h2></>) : (<>
         <div className="flex overflow-x-scroll pb-10 hide-scroll-bar gap-5">
@@ -53,7 +53,7 @@ export default function Home() {
       }
       
     </div>
+    </div>
 
-    </>
   );
 }

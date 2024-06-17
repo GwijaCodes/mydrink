@@ -5,8 +5,9 @@ const nextConfig = {
         ignoreDuringBuilds: true,
     },
     images: {
-        domains: ['www.thecocktaildb.com'],
-    }
+        domains: ['www.thecocktaildb.com', 'images.unsplash.com'],
+    },
+    
 };
 
 export default nextConfig;
