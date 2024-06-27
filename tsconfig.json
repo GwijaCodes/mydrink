@@ -34,7 +34,9 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "app/[id]/page.jsx",
-    "app/components/Search.tsx"
+    "app/components/Search.tsx",
+    "app/page.tsx",
+    "app/layout.tsx"
   ],
   "exclude": [
     "node_modules"
