@@ -1,24 +1,12 @@
 {
-    "favdrinks": [
-        {
-            "id": 11410,
-            "name": "Gin Fizz",
-            "url": "https://www.thecocktaildb.com/images/media/drink/drtihp1606768397.jpg"
-        },
-        {
-            "id": 12107,
-            "name": "Salty Dog",
-            "url": "https://www.thecocktaildb.com/images/media/drink/4vfge01504890216.jpg"
-        },
-        {
-            "id": 11007,
-            "name": "Margarita",
-            "url": "https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg"
-        },
-        {
-            "id": 12107,
-            "name": "Salty Dog",
-            "url": "https://www.thecocktaildb.com/images/media/drink/4vfge01504890216.jpg"
-        }
-    ]
+  "favdrinks": [
+    {
+      "id": 12107,
+      "name": "Salty Dog",
+      "url": "https://www.thecocktaildb.com/images/media/drink/4vfge01504890216.jpg"
+    },
+    {
+      "id": 12108
+    }
+  ]
 }

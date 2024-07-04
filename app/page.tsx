@@ -32,22 +32,30 @@ export default function Home({ }) {
 
     fetchRecipes()
   }, [])
-    
-    useEffect(() => {
-      fetch(`http://localhost:3001/favdrinks`)
+
+  const fetchFavs = async () => {
+          fetch(`http://localhost:3001/favdrinks`)
       .then(response => response.json())
       .then(data => setFavs(data))
       .catch(err => console.log(err))
-      
+      }  
+       
+    useEffect(() => {
+     fetchFavs();
     }, []);
+
+
+    function scrollInView () {
+      document.querySelector('.results').scrollIntoView({behavior: "smooth"})  
+    }
 
 
   return (
     <div className="bg-[--pale]">
-      <Header />
+      <Header func={scrollInView}/>
       <Search setRecipes={setRecipes} />
 
-      <div className="flex items-center justify-baseline p-10">
+      <div className="results flex items-center justify-baseline p-10">
         {
           loading ? (<><h2 className="text-center 3-xl">Loading...</h2></>) : (<>
             <div className="flex overflow-x-scroll pb-10 hide-scroll-bar gap-5">
@@ -56,7 +64,8 @@ export default function Home({ }) {
                   <Card
                     key={recipe?.idDrink}
                     recipe={recipe?.strDrink} 
-                    url={recipe?.strDrinkThumb}/>
+                    url={recipe?.strDrinkThumb}
+                    link={recipe?.idDrink}/>
                 ))
               }
             </div>
@@ -73,6 +82,7 @@ export default function Home({ }) {
                 key={fav?.id}
                 recipe={fav?.name}
                 url={fav?.url}
+                link={fav?.id}
               />
             ))
           }

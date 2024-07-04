@@ -2,25 +2,37 @@ import React from "react";
 import { useState } from "react";
 import '../globals.css';
 
-export default function Star({ saved, key, pic, name }) {
+export default function Star({ id, pic, name }) {
     const [fill, setFill] = useState('none')
+    const [favs, setFavs] = useState([]);
+
+    const fetchFavs = async () => {
+        fetch(`http://localhost:3001/favdrinks`)
+            .then(response => response.json())
+            .then(data => setFavs(data))
+            .catch(err => console.log(err))
+    }
 
     const starred = (e) => {
         if (e.defaultPrevented) return
         e.preventDefault()
-
         fill == 'none' ? (setFill('#D95F43')) : (setFill('none'))
 
         if (fill == 'none') {
+            let favDrink = { id: id, name: name, url: pic }
 
-            // let favDrink = { key: key, name: name, pic: pic }
-            // saved.push(favDrink)
-
-            // console.log(saved)
+            fetch(`http://localhost:3001/favdrinks`,
+                {
+                    method: 'POST',
+                    body: JSON.stringify({ favDrink })
+                }
+            ).then(res => res.json())
+                .then(json => console.log(favDrink))
 
         }
-
     }
+
+
 
     return (
         <div className="w-10 h-10 p-2 rounded-full bg-[--teal] flex items-center" onClick={starred}>
