@@ -20,15 +20,13 @@ export default function Star({ id, pic, name }) {
 
         if (fill == 'none') {
             let favDrink = { id: id, name: name, url: pic }
+            let stringFav = JSON.stringify(favDrink)
+            // console.log(favDrink)
+            localStorage.setItem(favDrink.id, stringFav)
 
-            fetch(`http://localhost:3001/favdrinks`,
-                {
-                    method: 'POST',
-                    body: JSON.stringify({ favDrink })
-                }
-            ).then(res => res.json())
-                .then(json => console.log(favDrink))
-
+        } else {
+            let favDrink = { id: id, name: name, url: pic }
+            localStorage.removeItem(favDrink.id)
         }
     }
 
