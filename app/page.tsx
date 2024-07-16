@@ -2,14 +2,12 @@
 import React, { useEffect, useState } from "react";
 import Header from './components/Header'
 import Search from './components/Search'
-import Card from './components/Card'
+import Star from './components/Star'
 import Link from "next/link";
 
 export default function Home() {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(false);
-  
-  
 
   // Scroll to drinks search
   function scrollInView () {
@@ -61,8 +59,6 @@ export default function Home() {
     if(favs.includes(recipe) === false){
       setFavs([...favs, recipe])
     }
-    
-    console.log(favs)
   }
 
   //Remove saved drinks
@@ -84,11 +80,11 @@ export default function Home() {
                   <Link href={`/recipes/${recipe?.idDrink}`}>
                     <div className="h-[100px] w-[max-content] p-10 m-2 bg-gray-300 text-center">
                     <h2>{recipe?.strDrink}</h2>
-                    <button className="bg-green-500 p-4" onClick={(e) => {
+                    <button onClick={(e) => {
                       e.preventDefault()
                       addToFavs(recipe)
                       }}>
-                        {isFav ? (<p>full star</p>) : (<p>empty star</p>)}
+                        <Star/>
                         </button>
                     </div>
                   </Link>
@@ -110,8 +106,8 @@ export default function Home() {
               <Link href={`/recipes/${recipe?.idDrink}`}>
                 <div className="h-[100px] w-[max-content] p-10 m-2 bg-gray-300 text-center">
                 <h2>{recipe?.strDrink}</h2>
-                <button className="bg-red-500 p-4" onClick={(e) => {e.preventDefault(), removeFav(recipe)}}>
-                  filled star
+                <button onClick={(e) => {e.preventDefault(), removeFav(recipe)}}>
+                <Star/>
                   </button>
                 </div>
               </Link>
