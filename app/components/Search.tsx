@@ -28,7 +28,7 @@ function Search({setRecipes}) {
           onChange={(e) => {setSearch(e.target.value)}} 
           className='bg-[--teal] h-10 px-5 pr-rounded-lg text-sm focus:outline-none' 
           type="search" 
-          placeholder='Search for a recipe...'
+          placeholder='Gin'
           />
           
           <button onClick={searchRecipes} className='w-10 h-10 flex items-center justify-center ml-2 bg-black hover:bg-gradient-to-r from-[--pink] to-teal-300 transition duration-500 ease-in-out animated-gradient text-white font-bold rounded-full'>
