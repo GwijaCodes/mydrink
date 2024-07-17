@@ -22,19 +22,21 @@ function Search({setRecipes}) {
   return (
     <div className='m-10'>
       <h2>Cerca un cocktail</h2>
-      <div className='flex'>
+      <form action={searchRecipes} className='flex'>
           <input 
           value={search} 
           onChange={(e) => {setSearch(e.target.value)}} 
-          className='bg-[--teal] h-10 px-5 pr-rounded-lg text-sm focus:outline-none' 
+          className='bg-[--teal] h-10 w-[200px] px-5 pr-rounded-lg text-sm focus:outline-none' 
           type="search" 
-          placeholder='Gin'
+          placeholder='Ex. Gin, Lime, Margarita...'
           />
           
-          <button onClick={searchRecipes} className='w-10 h-10 flex items-center justify-center ml-2 bg-black hover:bg-gradient-to-r from-[--pink] to-teal-300 transition duration-500 ease-in-out animated-gradient text-white font-bold rounded-full'>
+          <button type="submit" 
+          //  onClick={searchRecipes}
+            className='w-10 h-10 flex items-center justify-center ml-2 bg-black hover:bg-gradient-to-r from-[--pink] to-teal-300 transition duration-500 ease-in-out animated-gradient text-white font-bold rounded-full'>
           <FaMagnifyingGlass />
             </button>
-      </div>
+      </form>
     </div>
 
   )
