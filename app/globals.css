@@ -11,6 +11,15 @@
 
 .body{
   background-color: #F2E9D8;
+  fomt-family: var(--font-inter);
+}
+
+.title{
+  font-family: var(--font-abril);
+}
+
+.handw{
+  font-family: var(--font-zeyada);
 }
 
 @layer utilities {

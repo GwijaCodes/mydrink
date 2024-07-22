@@ -59,20 +59,21 @@ export default function Home() {
   }
 
   return (
-    <div className="bg-[--pale]">
+    <div>
       <Header func={scrollInView}/>
       <Search setRecipes={setRecipes} />
 
-      <div className="results w-full scroll-m-[30vh] flex items-center justify-baseline p-10">
+      <div className="results relative w-full min-h-10 scroll-m-[25vh] flex items-center justify-baseline p-10">
         {
-          loading ? (<><h2 className="text-center 3-xl">Loading...</h2></>) : (<>
+          loading ? (<><h2 className="text-center 3-xl">Let's see...</h2></>) : (<>
             <div className="flex overflow-x-scroll pb-10 gap-5">
               {
                  recipes ? recipes.map((recipe) => (
                   <Link href={`/recipes/${recipe?.idDrink}`}>
                     <div className="relative h-[250px] w-[250px] p-10 m-2 text-center">
                     <img className="absolute z-[0] w-full h-full top-0 left-0" src={recipe?.strDrinkThumb} alt="drink image" />
-                    <h2>{recipe?.strDrink}</h2>
+                    <div className="absolute w-full h-full top-0 left-0 bg-gradient-to-t from-[#000000ee] to-30% to-transparent"></div>
+                    <h2 className="text-white absolute bottom-4 left-8">{recipe?.strDrink}</h2>
                     <button className="absolute right-2 top-2" onClick={(e) => {
                       e.preventDefault()
                       addToFavs(recipe)
@@ -83,26 +84,35 @@ export default function Home() {
                   </Link>
                  )) 
                 
-                : (<h2>Try with something else!</h2>)
+                : (
+                  
+                <div>
+                  <h2 className="text-lg">Whoops, try with something else!</h2>
+
+                  <div className="m-20">
+                  <p className="handw text-2xl">“Alcohol is probably one of the greatest things to arrive upon the earth - alongside of me.”</p>
+                  <p>-Charles Bukowski</p>
+                  </div>
+                  </div>
+              )
               }
             </div>
           </>)
         }
-
       </div>
 
-        <h2 className="px-10">I tuoi preferiti</h2>
-      <div className="flex items-center justify-baseline p-10 bg-yellow-200">
+        <h2 className="px-10 mt-20 text-xl">Your favorites</h2>
+      <div className="flex items-center justify-baseline p-10">
         <div className="flex overflow-x-scroll pb-10 hide-scroll-bar gap-5">
-          <div onClick={() => setFavs([])} className="p-4 cursor-pointer bg-black text-white">Clear</div>
+          {/* <div onClick={() => setFavs([])} className="p-4 cursor-pointer bg-black text-white">Clear</div> */}
           {
             favs.length > 0 ? favs?.map((recipe) => (
               <Link href={`/recipes/${recipe?.idDrink}`}>
-                <div className="relative h-[300px] w-[300px] p-10 m-2 bg-gray-300 text-center">
+                <div className="relative h-[250px] w-[250px] p-10 m-2 bg-gray-300 text-center">
                 <img className="absolute w-full h-full top-0 left-0" src={recipe?.strDrinkThumb} alt="drink image" />
-
-                <h2>{recipe?.strDrink}</h2>
-                <button onClick={(e) => {
+                <div className="absolute w-full h-full top-0 left-0 bg-gradient-to-t from-[--teal] to-40% to-transparent"></div>
+                <h2 className="text-white absolute bottom-4 left-8">{recipe?.strDrink}</h2>
+                <button className="absolute right-2 top-2" onClick={(e) => {
                   e.preventDefault()
                   removeFav(recipe)
                   }}>
@@ -119,6 +129,7 @@ export default function Home() {
               </Link>
             )) : <h2>No favs yet! Too bad.</h2>
           }
+
         </div>
       </div>
     </div>

@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Zeyada, Abril_Fatface } from "next/font/google";
+import Header from "./components/Header";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], variable: '--font-inter' });
+const abril = Abril_Fatface({ subsets: ["latin"], weight:'400', variable: '--font-abril'});
+const zeyada = Zeyada({ subsets: ["latin"], weight:'400', variable: '--font-zeyada' });
 
 export const metadata: Metadata = {
   title: "Oh My Gin",
@@ -16,7 +19,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`bg-[--pale] ${inter.variable} ${abril.variable} ${zeyada.variable}`}>
+        {/* <Header func={''}/> */}
+        {children}
+        </body>
     </html>
   );
 }
